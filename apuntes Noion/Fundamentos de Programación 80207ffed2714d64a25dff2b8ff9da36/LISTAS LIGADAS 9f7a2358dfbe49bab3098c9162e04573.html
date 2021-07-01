@@ -1,0 +1,824 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>LISTAS LIGADAS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9f7a2358-dfbe-49ba-b309-8c9162e04573" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📍</span></div><h1 class="page-title">LISTAS LIGADAS</h1></header><div class="page-body"><nav id="97a55c85-7f04-4ae2-bf74-8e1d5c06c196" class="block-color-red_background table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#42e238ac-0497-412b-a0ae-3312b82c6615">LISTAS LIGADAS</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ae99ad0e-43a4-46a8-8ed2-7725dc02c50c">Manejo estático de la memoria</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21d1128c-cf27-4bd7-bbe8-d7b3b1890d7f"><mark class="highlight-teal">DATO</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#df3e0906-c9d0-41aa-9a26-ae8fbbdf2c4d"><mark class="highlight-teal">LIGA</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#01516616-0910-4520-856b-78c8d97cfa34"><mark class="highlight-red">Clase liga</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f7385f24-13dc-4007-8085-539776d5fe00">Clase Lista Simplemente Ligada</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85ed17b4-6582-40c2-a066-b5d34e9d912a">PILAS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#072d5844-2bc3-48a7-8eae-08c68b86f348">OPERACIONES</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4114cf87-f00c-4b51-aba8-80da3913c09b"><mark class="highlight-teal">Representación de pilas como lista ligada</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#17e438d6-fc2b-442f-b742-69f4e70ea41f">COLA</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7f0fecfe-60b8-47ea-bb57-3f5c7d7ed3f5">OPERACIONES</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8184e6aa-7a8d-424a-bf42-43e4e13ec72e">Representación de colas en un vector</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e79cd7ca-4706-490a-9f7e-622cc9e355eb"><mark class="highlight-teal">Representación de COLAS como lista ligada</mark></a></div></nav><h1 id="42e238ac-0497-412b-a0ae-3312b82c6615" class="">LISTAS LIGADAS</h1><figure id="e96954e0-c149-4116-a822-c41006748797" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled.png"><img style="width:1000px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled.png"/></a></figure><h1 id="ae99ad0e-43a4-46a8-8ed2-7725dc02c50c" class="block-color-red">Manejo estático de la memoria</h1><p id="162b5530-a506-4b7e-9961-c7ca6aff96ff" class="">Generalizando, se considera el <mark class="highlight-red">peor de los casos,</mark> que es cuando hay que insertar el dato al principio del vector. Hay que mover n datos en el vector, lo cual implica que el algoritmo de inserción tendrá orden de magnitud O(n).</p><figure id="29e78d8b-a291-4ba7-9cbd-37832e0cc22f" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%201.png"><img style="width:876px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%201.png"/></a></figure><figure id="c244319c-c53e-45b3-ac90-92121e1854a3" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%202.png"><img style="width:888px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%202.png"/></a></figure><h2 id="21d1128c-cf27-4bd7-bbe8-d7b3b1890d7f" class=""><mark class="highlight-teal">DATO</mark></h2><p id="7326ec28-a67a-4d5c-be48-aa0b77cf0365" class="">Almacenamos los datos en posiciones aleatorias. Físicamente los datos se hallan en desorden. Nos interesa tenerlos ordenados lógicamente. El símbolo ┤ representa nulo.</p><h2 id="df3e0906-c9d0-41aa-9a26-ae8fbbdf2c4d" class=""><mark class="highlight-teal">LIGA</mark></h2><p id="a5e038c5-0a6b-44bf-a300-d5f1a0bc1677" class="">almacena la ubicacion del caracter en la lista</p><h2 id="01516616-0910-4520-856b-78c8d97cfa34" class=""><mark class="highlight-red">Clase liga</mark></h2><pre id="e97365e2-9d5f-400a-af77-0248d9443059" class="code"><code>class nodoSimple:
+   def __init__(self, d = None):
+      self.dato = d
+      self.liga = None
+
+   def asignarDato(self, d):
+      self.dato = d
+
+   def asignarLiga(self, x):
+      self.liga = x
+
+   def retornarDato(self):
+      return self.dato
+
+   def retornarLiga(self):
+      return self.liga</code></pre><h2 id="f7385f24-13dc-4007-8085-539776d5fe00" class="block-color-red">Clase Lista Simplemente Ligada</h2><p id="ea388ffd-c274-4421-83e2-17f7568be071" class="">Es un conjunto de nodos conectados cuyo elemento básico son objetos de la clase nodoSimple. Con el fin de poder operar sobre este conjunto de nodos es necesario conocer el primer nodo del conjunto de nodos que están conectados y en muchas situaciones el último nodo del conjunto. Con base en esto vamos a definir una clase llamada LSL, la cual tendrá dos datos privados de la clase nodoSimple, que llamaremos primero y ultimo: primero apuntará hacia el primer nodo de la lista y ultimo apuntará hacia el último nodo de la lista. Además, definiremos las operaciones que podremos efectuar sobre objetos de dicha clase.</p><pre id="113f0a7c-0d23-4437-b7a7-42aecc3c2eb0" class="code"><code>class LSL:
+   def __init__(self): #Constructor
+      self.primero = None
+      self.ultimo = None
+
+   def primerNodo(self):
+      return self.primero
+
+   def ultimoNodo(self):
+      return self.ultimo
+
+   def esVacia(self):
+      return self.primero == None
+
+   def finDeRecorrido(self, p):
+      return p == None
+
+   def recorrerLista(self):
+       p = self.primerNodo()
+       while not self.finDeRecorrido(p):
+            print(p.retornarDato(), end = &quot;, &quot;)
+            p = p.retornarLiga()
+
+   def agregarDato(self, d):
+      x = nodoSimple(d)
+      p = self.primerNodo()
+       if p == None:
+             self.primero = x
+            self.ultimo = x
+      else:
+            self.ultimo.liga = x
+            self.ultimo = x
+
+   def buscarDondeInsertar(self, d):
+      p = self.primerNodo()
+      y = None
+      while not self.finDeRecorrido(p) and p.retornarDato() &lt;
+d:
+            y = p
+            p = p.retornarLiga()
+      return y
+
+   def insertar(self, d, y):
+      x = nodoSimple(d)
+      self.conectar(x, y)
+
+   def conectar(self, x, y):
+      if y == None:
+          if self.primero == None:
+             self.ultimo = x
+          else:
+             x.asignarLiga(self.primero)
+          self.primero = x
+          return
+     x.asignarLiga(y.retornarLiga())
+     y.asignarLiga(x)
+    if y == self.ultimo:
+          self.ultimo = x
+
+   def longitud(self):
+      p = self.primerNodo()
+      n = 0
+      while not self.finDeRecorrido(p):
+          n = n + 1
+          p = p.retornarLiga()
+      return n
+
+   def buscarDato(self, d, y):
+      x = self.primerNodo()
+      while not self.finDeRecorrido(x) and x.retornarDato() != d:
+          y.asignarDato(x)
+          x = x.retornarLiga()
+      return x
+
+   def borrar(self, x, y = None):
+      if x == None:
+          print(&quot;Dato no está en la lista&quot;)
+          return
+      if y == None:
+          if x != self.primero:
+                 print(&quot;Falta el anterior del dato a borrar&quot;)
+                 return
+      else:
+           y = y.retornarDato()
+      self.desconectar(x, y)
+
+   def desconectar(self, x, y):
+       if y == None:
+           self.primero = x.retornarLiga()
+           if self.esVacia():
+               self.ultimo = None
+        else:
+            y.asignarLiga(x.retornarLiga())
+            if x == self.ultimo:
+               self.ultimo = y</code></pre><p id="e400711f-f35f-44fd-a6e5-a52c6c572a48" class="">a = LSL()</p><p id="0559d189-41d6-4241-861d-8787309ff73b" class="">b = LSL()</p><figure id="285912bb-c12a-4aa4-839c-ac2ff285db9c" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%203.png"><img style="width:885px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%203.png"/></a></figure><figure id="a1d6bd8c-254e-4199-924d-1832bb6e665d" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%204.png"><img style="width:733px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%204.png"/></a></figure><p id="d76de3da-6dd2-4ded-9df8-421bbcdc3cec" class="">p = a.primerNodo() —→ retorna p=4</p><p id="ee650453-bac6-4d58-861a-31dfc01e5b87" class=""><mark class="highlight-red">finDeRecorrido(p) </mark>retorna verdadero si el nodo p enviado como parámetro es None, falso de lo contrario.</p><p id="c580cd76-4510-4c78-aa08-b28f8bc93fd1" class="">La función <mark class="highlight-red">anterior(x) </mark>retorna el nodo anterior al nodo enviado como parámetro. Si tenemos que x =7 y ejecutamos la instrucción p =a.anterior(x), entonces p quedará valiendo 8.</p><p id="993955aa-f3d9-4d29-a43d-eab46c233117" class="">El método <mark class="highlight-red">recorrerLista()</mark>, como su nombre lo dice, simplemente recorre y escribe los datos de una lista simplemente ligada. Si ejecutamos la instrucción a.recorrerLista(), el resultado que se obtiene es la escritura; b, e, i, o, u.</p><p id="d17b98b9-ee3c-4887-8337-5f15a36625b9" class="">La función <mark class="highlight-red">buscarDondeInsertar(d)</mark> retorna el nodo a continuación del cual se debe insertar un nuevo nodo con dato d en una lista simplemente ligada en la cual los datos están ordenados ascendentemente y deben continuar cumpliendo esta característica después de insertarlo</p><p id="feadf795-cc6b-4a2c-99ce-95f6ca3e2fff" class="">El método<mark class="highlight-red"> insertar(d, y)</mark> consigue un nuevo nodoSimple, lo carga con el dato d, e invoca el método conectar con el fin de conectar el nuevo nodo (llamémoslo x) a continuación del nodo y.</p><ul id="994740b9-7c14-41bf-99c5-137ccf75aaa5" class="toggle"><li><details open=""><summary>d = ‘f’
+y = a.buscarDondeInsertar(d)
+a.insertar(d, y)</summary><figure id="af764015-400a-4205-bb4b-fd31507c6ca0" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%205.png"><img style="width:781px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%205.png"/></a></figure></details></li></ul><p id="b7f41d04-86ec-4ec3-b470-cc6aafa77581" class="">La función<mark class="highlight-red"> buscarDato(d, y),</mark> como su nombre lo dice, busca el dato d en la lista que invoca el método: si lo encuentra, retorna el nodo en el cual lo encontró, de lo contrario retorna None.</p><p id="0c13d8e4-5bee-4739-b27b-3726f461c62b" class="">El método<mark class="highlight-red"> borrar(x, y)</mark> controla que el parámetro x sea diferente de None: si x es None, produce el mensaje de que el dato d (el dato buscado con el método buscarDato) no se halla en la lista y retorna; si x es diferente de None, invoca el método desconectar(x, y).</p><p id="d92045ac-5d12-4e25-b66e-d02ccb9833db" class="">El método <mark class="highlight-red">desconectar(x, y) </mark>simplemente desconecta el nodo x de la lista que invoca el método. Para desconectar un nodo de una lista se necesita conocer cuál es el nodo anterior. Por tanto, en el nodo y, el segundo parámetro, su campo de dato contiene el nodo anterior a x.</p><ul id="7985693d-769c-437c-b01f-0f18e405b527" class="toggle"><li><details open=""><summary>d = ‘i’
+x = a.buscarDato(d, y) // x queda valiendo 7 y y.retornarDato() valdrá 9
+a.borrar(x, y) // desconecta el nodo x</summary><figure id="a9865e7e-0de0-461a-b8c6-c1998d80fd2c" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%206.png"><img style="width:879px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%206.png"/></a></figure></details></li></ul><h1 id="85ed17b4-6582-40c2-a066-b5d34e9d912a" class="block-color-red_background">PILAS</h1><p id="d8b6a3d0-9e72-4877-829d-eacb40f1e7ad" class="">Una pila es una <mark class="highlight-red">lista ordenada en la cual todas las operaciones (inserción y borrado) se efectúan en un solo extremo llamado tope</mark>. Es una estructura LIFO (Last Input First Output), que son las iniciales de las palabras en inglés “último en entrar primero en salir”, debido a que los datos almacenados en ella se retiran en orden inverso al que fueron entrados.</p><figure id="a4cb30a6-93a2-4ec7-90d9-5e67215f6193" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%207.png"><img style="width:756px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%207.png"/></a></figure><h2 id="072d5844-2bc3-48a7-8eae-08c68b86f348" class="block-color-teal">OPERACIONES</h2><ol id="20ca7ff1-c77a-4a10-b57c-97b14955c407" class="numbered-list" start="1"><li><mark class="highlight-blue">crear: </mark>crea una pila vacía.</li></ol><ol id="64c5d97b-973d-40e6-a151-b6d9abf3bce6" class="numbered-list" start="2"><li><mark class="highlight-blue"><strong>apilar: </strong></mark>incluye el dato d en la pila.</li></ol><ol id="5e1c72bd-78c1-4665-9056-1be05af893bd" class="numbered-list" start="3"><li><mark class="highlight-blue">desapilar: </mark>elimina el último elemento de la pila y deja una nueva pila la cual queda con un elemento menos.</li></ol><ol id="8718c2bf-309a-4d72-bd62-b4b4431c8327" class="numbered-list" start="4"><li><mark class="highlight-blue">cima</mark>: retorna el dato que está de último en la pila, sin eliminarlo.</li></ol><ol id="948440d6-da07-4150-8319-126df2c7b54b" class="numbered-list" start="5"><li><mark class="highlight-blue">esVacia: </mark>retorna verdadero si la pila está vacía, falso de lo contrario.</li></ol><ol id="1343000f-d87d-4e11-8a63-84871124e588" class="numbered-list" start="6"><li><mark class="highlight-blue">esLlena</mark>: retorna verdadero si la pila está llena, falso de lo contrario.</li></ol><pre id="e0ba1a6b-c955-4789-a785-e747cd1863f0" class="code"><code>class pila(vector):
+   def __init__(self, n):
+       vector.__init__(self, n)
+
+   def apilar(self, d):
+       self.agregarDato(d)
+
+   def muestraPila(self):
+       self.imprimeVector()
+
+   def desapilar(self):
+      if self.V[0] == 0:
+           print(&quot;Pila vacía&quot;)
+           return None
+      d = self.V[self.V[0]]
+      self.V[0] = self.V[0] - 1
+      return d</code></pre><h2 id="4114cf87-f00c-4b51-aba8-80da3913c09b" class=""><mark class="highlight-teal">Representación de pilas como lista ligada</mark></h2><p id="07b03a3d-7eff-46cd-8ca6-9d7341c1627e" class="">Para representar una pila como lista ligada basta definir la clase pila derivada de la clase LSL. Nuevamente, como estamos definiendo la clase pila derivada de la clase lista simplemente ligada, podremos utilizar todos los métodos que hemos definido para la clase LSL. </p><figure id="4c33b929-87dc-4cd1-9e37-9c2bbf860b4b" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%208.png"><img style="width:752px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%208.png"/></a></figure><figure id="c1c722d4-465a-4ae7-92e3-7043cd336b22" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%209.png"><img style="width:758px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%209.png"/></a></figure><pre id="d920328f-84a9-417c-91ca-9ae4c39a9385" class="code"><code>class pila(LSL):
+   def __init__(self):
+       LSL.__init__(self)
+
+   def apilar(self, d):
+       self.insertar(d)
+
+   def muestraPila(self):
+       self.recorrerLista()
+
+   def desapilar(self):
+       p = self.primerNodo()
+       d = p.retornarDato()
+       self.borrar(p)
+        return d</code></pre><h1 id="17e438d6-fc2b-442f-b742-69f4e70ea41f" class="block-color-red_background">COLA</h1><p id="91fcdc3a-9aec-4420-b97e-583fef16bb88" class="">es una<mark class="highlight-red"> lista ordenada</mark> en la cual las operaciones de inserción se efectúan en un extremo llamado ultimo y las operaciones de borrado se efectúan en el otro extremo llamado primero. Es una estructura FIFO (First Input First Output).</p><figure id="47e6506a-7dc1-4b79-96a0-1096c4ccfb3b" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%2010.png"><img style="width:847px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%2010.png"/></a></figure><h2 id="7f0fecfe-60b8-47ea-bb57-3f5c7d7ed3f5" class="block-color-teal">OPERACIONES</h2><ol id="e809ab4a-ea0b-455c-95aa-9614250ce457" class="numbered-list" start="1"><li><mark class="highlight-blue">crear:</mark> crea una cola vacía.</li></ol><ol id="d65d202c-fd46-48da-a3ea-4201ef32e51c" class="numbered-list" start="2"><li><mark class="highlight-blue">esVacia():</mark> retorna verdadero si la cola está vacía, falso de lo contrario.</li></ol><ol id="9797bb45-8e85-4f76-af5a-38e0053874dd" class="numbered-list" start="3"><li><mark class="highlight-blue">esLlena():</mark> retorna verdadero si la cola está llena, falso de lo contrario.</li></ol><ol id="dc078638-f2c2-4e55-a94b-e4373eeddd87" class="numbered-list" start="4"><li><mark class="highlight-blue">encolar(d):</mark> inserta un dato d al final de la cola.</li></ol><ol id="84c2b182-e424-41a2-ac48-d65db2a836e9" class="numbered-list" start="5"><li><mark class="highlight-blue">desencolar():</mark> remueve el primer elemento de la cola.</li></ol><ol id="a6ad4cef-7dda-47fe-ab1f-b880cad9a732" class="numbered-list" start="6"><li><mark class="highlight-blue">siguiente():</mark> retorna el dato que se halla de primero en la cola.</li></ol><h2 id="8184e6aa-7a8d-424a-bf42-43e4e13ec72e" class="block-color-teal">Representación de colas en un vector</h2><p id="df13834d-d282-4061-8f71-2a29c553db6b" class="">Definiremos la clase cola derivada de la clase vector. Manejaremos la cola circularmente en el vector. Para manejar una cola circularmente en un vector se requiere definir un vector de n elementos con los subíndices en el rango desde 0 hasta n – 1, es decir, si el vector tiene 10 elementos, los subíndices variarán desde 0 hasta 9.Adicionalmente se manejan dos variables: primero y ultimo: primero apunta hacia la posición anterior en la que realmente se halla el primer dato de la cola, y ultimo apunta hacia la posición en la que realmente está el último dato de la cola.</p><pre id="a5137756-ff06-49a0-a20c-afdf580110b4" class="code"><code>class cola(vector):
+   def __init__(self, n):
+      vector.__init__(self, n)
+      self.primero = 0
+      self.ultimo = 0
+
+   def esLlena(self):
+      return self.primero == self.ultimo
+
+   def esVacia(self):
+      return self.primero == self.ultimo
+
+   def encolar(self, d):
+      self.ultimo = (self.ultimo + 1) % self.n
+      if self.esLlena():
+          print(&quot;cola llena, no se puede encolar\n&quot;)
+          self.ultimo = (self.ultimo - 1 + self.n) % self.n
+          return
+      self.V[ultimo] = d
+
+   def desencolar(self):
+      if self.esVacia():
+          print(&quot;cola vacía, no se puede desencolar\n&quot;)
+          return None
+      self.primero = (self.primero + 1) % self.n
+      return self.V[primero]
+
+   def siguiente(self):
+      if self.esVacia():
+          print(&quot;cola vacía, no hay siguiente\n&quot;)
+          return None
+      aux = (self.primero + 1) % self.n
+      return self.V[aux]</code></pre><h2 id="e79cd7ca-4706-490a-9f7e-622cc9e355eb" class=""><mark class="highlight-teal">Representación de COLAS como lista ligada</mark></h2><figure id="426bad66-2241-4389-9486-58b1d2922d48" class="image"><a href="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%2011.png"><img style="width:844px" src="LISTAS%20LIGADAS%209f7a2358dfbe49bab3098c9162e04573/Untitled%2011.png"/></a></figure><pre id="9af55b2d-4cd7-4df3-8062-5f39056bd8e5" class="code"><code>class cola(LSL):
+   def __init__(self):
+      LSL.__init__(self)
+
+   def encolar(self, d):
+      self.agregarDato(d)
+
+   def desencolar(self):
+     if self.esVacia():
+          print(&quot;\nCola vacía no hay datos para desencolar&quot;)
+          return None
+     d = self.primero.retornarDato()
+          p = self.primerNodo()
+      self.borrar(p)
+      return d
+
+   def siguiente(self):
+      if self.esVacia():
+          print(&quot;\nCola vacía no hay siguiente&quot;)
+          return None
+      d = self.primero.retornarDato()
+      return d</code></pre></div></article></body></html>

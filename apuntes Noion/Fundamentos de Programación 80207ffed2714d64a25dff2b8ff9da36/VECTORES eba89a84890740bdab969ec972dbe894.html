@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>VECTORES</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="eba89a84-8907-40bd-ab96-9ec972dbe894" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔏</span></div><h1 class="page-title">VECTORES</h1></header><div class="page-body"><h1 id="935a4b68-a49c-4e62-b404-a05104c0ffa4" class="block-color-teal_background">Vectores = casillero</h1><p id="41a483be-a339-4cf9-8e91-8a359849a1ae" class="">Al crear un vector que no se quiere inicializar con una dimension especifica se realiza de la siguiente manera</p><p id="8123043a-b192-48e5-bceb-b7495a9c7a65" class=""> V = [0] * 10</p><figure id="463b1fcc-9474-4c26-ac01-3844194a6c54" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled.png"><img style="width:724px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled.png"/></a></figure><h2 id="5bab5670-a98f-41bc-b927-2a51558aeff0" class="block-color-blue">Operaciones básicas con vectores</h2><h2 id="0a579ade-653c-4ca6-9e3e-6e0ad9676f73" class="block-color-blue">Operaciones básicas con vectores</h2><h3 id="68448a5a-1e62-4c91-bd5b-9b2f336db16a" class="block-color-purple">Definición:</h3><pre id="1c1e87cf-3e95-47f9-b56a-62e63ed2b153" class="code"><code>var=[valor en celdas]*(tamaño+1)</code></pre><h3 id="f9c730a1-d370-4709-8421-14ae4ea5b813" class="block-color-purple">Asignación / acceso</h3><p id="70712925-ed6d-4d13-8162-2437bb54aba4" class="">llevar un dato a una posición especifica o obtener el dato almacenado en una casilla</p><pre id="72273eac-3005-43a0-9bba-6c795fe8f97b" class="code"><code>var[posicion]=dato
+d1=var[posicion]</code></pre><h3 id="decc897f-e66a-45d5-acfd-754cd415f27a" class="block-color-purple">imprime vector</h3><pre id="4d9e5b3f-bb19-4415-8b3e-1e277bceab60" class="code"><code>def imprimeVector(V, mensaje = &quot;Vector sin nombre&quot;):
+   print(&quot;\n&quot;, mensaje, end=&quot; &quot;)
+   m = V[0] + 1
+   for i in range(1, m):
+	   print(V[i], end = &quot;, &quot;)</code></pre><h3 id="f53d9254-0841-4768-aa39-cdad4ba05fc4" class="block-color-purple">Es vacio/ Es lleno</h3><pre id="0813198e-0f3c-49d1-8bc3-7105fb8c7a3c" class="code"><code>def esVacio(V):
+	if V[0] == 0:
+	  return True
+	return False
+
+def esLleno(V, n):
+	if V[0] == n:
+	  return True
+  return False</code></pre><h3 id="5469a507-ce88-4435-b836-9186fae2ffaa" class="block-color-purple">Suma vector</h3><pre id="2e188555-06f9-485a-87f6-954cdc55bedb" class="code"><code>def sumaVector(V):
+    n = V[0] + 1
+    s = 0
+    for i in range(1, n):
+         s = s + V[i]
+    return s</code></pre><h3 id="7004026f-a0b3-4f9d-90c2-321dda356332" class="block-color-purple">Borrar dato</h3><pre id="0908531b-566e-4dc3-ab35-5f9dbb79fdf4" class="code"><code>def borrarDato(d, V):
+     i = buscarDato(d, V)
+     if i != –1:
+          borrarDatoEnPosicion(i, V)</code></pre><h3 id="9f1757f3-ae67-40b7-a44e-7af7d5d0da34" class="block-color-purple">Agregar dato (no esta llena la celda)</h3><pre id="3c955319-2d06-42af-af6a-a4e961bb8a7a" class="code"><code>&quot;&quot;&quot;dato a insertar (d)
+el nombre del vector (V)
+el tamaño del vector (n)&quot;&quot;&quot;
+def agregarDato(d, V, n):
+	if esLleno(V, n):
+		return
+	V[0] = V[0] + 1
+  V[V[0]] = d</code></pre><h3 id="c3264d57-9938-41a2-b827-c509547ee243" class="block-color-purple">Insertar celda (agrega celda)</h3><pre id="c57ad37f-8440-4d38-97e5-6b3642737eec" class="code"><code>def insertarDato(d, i, V, n):
+    if esLleno(V, n):
+      return
+   for j in range(V[0], i – 1, –1):
+        V[j + 1] = V[j]
+   V[i] = d
+   V[0] = V[0] + 1</code></pre><h3 id="3f8fc442-df77-45df-b02e-8c6c77efc819" class="block-color-purple">Mayor dato</h3><pre id="bac0180b-cce8-4f32-9611-eb2ca4a89fb9" class="code"><code>def mayorDato(V):
+    mayor = 1
+    for i in range(2, V[0] + 1):
+       if V[i] &gt; V[mayor]:
+          mayor = i
+    return mayor</code></pre><h3 id="d734f373-29f2-4655-99f3-19079b782edc" class="block-color-purple">Intercambiar dato</h3><pre id="5a0ca960-6912-484e-be45-decb12e45f46" class="code"><code>def intercambiar(V, i, j):
+	aux = V[i]
+  V[i] = V[j]
+  V[j] = aux</code></pre><h2 id="18ac89a0-9f98-4e10-ad21-601e40a39e27" class="block-color-blue">Algoritmos de ordenacion</h2><h3 id="141c6361-f726-412b-8866-a9f95d8ca32d" class="block-color-purple">Seleccion</h3><figure id="102b111e-1a84-45d2-a8ce-0f17cffad694" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%201.png"><img style="width:643px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%201.png"/></a></figure><pre id="8943028a-bf2a-4913-99e9-8f91e0dca19d" class="code"><code>def ordenaAscen(V)
+	for i in range(1, V[0]):
+	  k = i
+    for j in range(i+1, V[0] + 1):
+	    if V[j] &lt; V[k]:
+	      k = j
+    intercambiar(V, i, k)
+</code></pre><h3 id="9cf4edae-a7ca-4c4c-81e0-094f1e2c9799" class="block-color-purple">Método Burbuja</h3><figure id="46c7db8f-7f23-4f02-8631-94dd2adb22ee" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%202.png"><img style="width:715px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%202.png"/></a></figure><pre id="79a16a7f-e5a0-4290-b390-106da3356878" class="code"><code>def busbin(self, d):
+    inicio = 1
+    fin = self.V[0]
+    while inicio &lt;= fin:
+          mitad = (inicio + fin) // 2
+          if self.V[mitad] == d:
+               return mitad
+          if d &lt; self.V[mitad]:
+              fin = mitad – 1
+         else:
+             inicio = mitad + 1
+return –1
+</code></pre><h3 id="f15d0fad-6b80-440e-ad57-77525ff25f7a" class="block-color-purple">Método Inserción</h3><figure id="c1085e4a-4bee-4eb7-b247-b62b8f1cf9f1" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%203.png"><img style="width:763px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%203.png"/></a></figure><pre id="b01c5889-3938-4f45-a11f-3ca8c83dd454" class="code"><code>def insercion(V):
+	for i n range(2,V[0]+1):
+		d=V[i]
+		j=i+1
+		while j&gt;0 and V[j]&gt;d:
+			V[j+1]=V[j]
+			j=j-1
+		V[j+1]=d</code></pre><h2 id="e6b66a24-7635-4eb4-b105-f38af951ca66" class="block-color-blue">Algoritmos de búsqueda</h2><h3 id="4b564add-9d75-4c79-a58d-d40cc165bd4d" class="block-color-purple">Búsqueda secuencial </h3><figure id="8f9fb358-36c3-4ab7-9816-44e919f32b9b" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%204.png"><img style="width:669px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%204.png"/></a></figure><h3 id="85a98627-7edf-4073-afa6-1702e1b9adbe" class="block-color-purple">Búsqueda binaria (datos ordenados)</h3><figure id="f1fae241-8440-4791-b0c9-ea7746acc36e" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%205.png"><img style="width:655px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%205.png"/></a></figure><p id="596f612e-831d-48ee-a481-c6a843745b07" class="">para python</p><figure id="1ed5a9c1-2e6a-4874-bcb6-0ef74fb82a5f" class="image"><a href="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%206.png"><img style="width:281px" src="VECTORES%20eba89a84890740bdab969ec972dbe894/Untitled%206.png"/></a></figure><h1 id="dd28c931-737e-44a5-b288-4fc0be212a61" class="block-color-red">LINKS IMPORTANTES </h1><p id="48acb54d-ddb0-4b4e-bd12-23b01872f489" class="">Muestra las caracteristicas de las colecciones, y los diferentes tiepos de colecciones</p><figure id="3a727925-085b-4e80-9ed8-3189bc387aca"><a href="https://docs.microsoft.com/es-es/dotnet/standard/collections/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Colecciones y estructuras de datos</div><div class="bookmark-description">A menudo, los datos similares pueden controlarse de forma más eficaz si se almacenan y manipulan como si fuesen una colección. Puede utilizar la clase System.Array o las clases de los espacios de nombres System.Collections, System.Collections.Generic, System.Collections.Concurrent y System.Collections.Immutable para agregar, quitar y modificar elementos individuales o un intervalo de elementos de una colección.</div></div><div class="bookmark-href"><img src="https://docs.microsoft.com/favicon.ico" class="icon bookmark-icon"/>https://docs.microsoft.com/es-es/dotnet/standard/collections/</div></div><img src="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png" class="bookmark-image"/></a></figure><p id="3d85c93d-99ee-4ff5-88c9-ed22033f1fde" class="">generaliza como se muestran las operaciones con vectores</p><figure id="5bd3c637-86c3-4780-a6cd-e1ae1d55a301"><a href="http://profesor.uprb.edu/mvelez/cursos/sici4036/ConceptosColecciones.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Conceptos sobre Colecciones y Estructuras de Datos</div><div class="bookmark-description">Tipo de Datos Abstracto (TDA) ( abstract data type, ADT) - modelo matemático compuesto por un conjunto de datos y las operaciones definidas para manipular esos datos. Los números enteros y las listas de números enteros son TDAs, pero e ] son tipos de datos concretos.Los lenguajes orientados a objetos utilizan tipos de datos primitivos y estructuras de datos para implementar TDAs.</div></div><div class="bookmark-href">http://profesor.uprb.edu/mvelez/cursos/sici4036/ConceptosColecciones.html</div></div></a></figure></div></article></body></html>
